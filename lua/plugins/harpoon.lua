@@ -4,6 +4,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local harpoon = require("harpoon")
+    local harpoon_extensions = require("harpoon.extensions")
     harpoon:setup()
 
     -- basic telescope configuration
@@ -25,6 +26,9 @@ return {
         })
         :find()
     end
+
+    harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
+    harpoon:extend(harpoon_extensions.builtins.navigate_with_number())
 
     vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = "Harpoon add" })
     vim.keymap.set("n", "<leader>he", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon quick menu" })
