@@ -73,3 +73,5 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increa
 vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+
+vim.keymap.set("n", "<leader>tt", require("util.switch-to-test").switch_buffer_to_test, { desc = "Toggle Switch between test<->lib" })

@@ -4,44 +4,71 @@ return {
     priority = 1000,
     lazy = false,
     name = "catppuccin",
-    opts = {
-      flavour = "machiato", -- latte, frappe, macchiato, mocha
-      integrations = {
-        gitsigns = true,
-        lsp_trouble = true,
-        mason = true,
-        markdown = true,
-        mini = true,
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
-        },
-        neotree = true,
-        noice = true,
-        notify = true,
-        telescope = true,
-        treesitter = true,
-        treesitter_context = true,
-        which_key = true,
-        snacks = {
-          enabled = true,
-          indent_scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-        },
-      },
-    },
     config = function()
-      -- Load the colorscheme here.
+      require("catppuccin").setup({
+        flavour = "macchiato", -- latte, frappe, macchiato, mocha
+        integrations = {
+          blink_cmp = {
+            style = "bordered",
+          },
+          dashboard = true,
+          gitsigns = true,
+          harpoon = false,
+
+          mason = false,
+          mini = {
+            enabled = true,
+            indentscope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+          },
+          neotree = true,
+          noice = true,
+          copilot_vim = true,
+          notify = true,
+          native_lsp = {
+            enabled = true,
+            virtual_text = {
+              errors = { "italic" },
+              hints = { "italic" },
+              warnings = { "italic" },
+              information = { "italic" },
+              ok = { "italic" },
+            },
+            underlines = {
+              errors = { "underline" },
+              hints = { "underline" },
+              warnings = { "underline" },
+              information = { "underline" },
+              ok = { "underline" },
+            },
+            inlay_hints = {
+              background = true,
+            },
+          },
+          treesitter = true,
+          snacks = {
+            enabled = true,
+            indent_scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+          },
+          telescope = {
+            enabled = true,
+            -- style = "nvchad"
+          },
+          which_key = true,
+        },
+      })
+
       vim.cmd.colorscheme("catppuccin")
     end,
   },
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      options = {
+        theme = "catppuccin",
+        -- ... the rest of your lualine config
+      },
+    },
   },
   {
     "akinsho/bufferline.nvim",

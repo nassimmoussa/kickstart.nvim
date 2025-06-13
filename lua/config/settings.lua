@@ -70,3 +70,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
   callback = function() vim.hl.on_yank() end,
 })
+
+vim.opt.foldlevel = 99
+vim.opt.foldexpr = "v:lua.require'util.fold'.foldexpr()"
+vim.opt.foldmethod = "expr"
+vim.opt.foldtext = ""

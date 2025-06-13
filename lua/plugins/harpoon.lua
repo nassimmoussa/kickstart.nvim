@@ -5,7 +5,10 @@ return {
   config = function()
     local harpoon = require("harpoon")
     local harpoon_extensions = require("harpoon.extensions")
-    harpoon:setup()
+    harpoon:setup({ settings = {
+      save_on_toggle = true,
+      sync_on_ui_close = true,
+    } })
 
     -- basic telescope configuration
     local conf = require("telescope.config").values
